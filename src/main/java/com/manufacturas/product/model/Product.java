@@ -31,6 +31,8 @@ public class Product {
     private String name;
     @Column(name = "description")
     private String description;
+    @Column(name = "stock")
+    private Integer stock;
     @Column(name = "price", precision = 10, scale = 2)
     private BigDecimal price;
     @Column(name = "created_at")
