@@ -35,10 +35,11 @@ public class Product {
     private Integer stock;
     @Column(name = "price", precision = 10, scale = 2)
     private BigDecimal price;
-    @Column(name = "created_at")
+    @Column(name = "created_at", updatable = false)
     @CreationTimestamp
     private LocalDateTime createdAt;
     @Column(name = "updated_at")
     @UpdateTimestamp
     private LocalDateTime updatedAt;
+
 }

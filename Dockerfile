@@ -1,6 +1,6 @@
 #stage 1
 #Start with a base image containing Java runtime (JDK for unpacking)
-FROM eclipse-temurin:17-jdk as build
+FROM eclipse-temurin:17-jdk AS build
 
 # Add Maintainer Info
 LABEL maintainer="Humberto Plata <silver@gmail.com>"

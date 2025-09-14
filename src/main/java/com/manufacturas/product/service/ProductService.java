@@ -1,5 +1,6 @@
 package com.manufacturas.product.service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +27,17 @@ public class ProductService {
         return productRepository.save(product);
     }
 
-    public Product updateProduct(Product product) {
-        return productRepository.save(product);
+    public Product updateProduct(Long id, Product product) {
+        Product existingProduct = getProductById(id);
+        if (existingProduct == null) {
+            throw new RuntimeException("Product not found");
+        }
+        existingProduct.setName(product.getName());
+        existingProduct.setDescription(product.getDescription());
+        existingProduct.setStock(product.getStock());
+        existingProduct.setPrice(product.getPrice());
+        existingProduct.setUpdatedAt(LocalDateTime.now());
+        return productRepository.save(existingProduct);
     }
 
     public void deleteProduct(Long id) {
