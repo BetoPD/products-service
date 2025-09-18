@@ -43,4 +43,18 @@ public class ProductService {
     public void deleteProduct(Long id) {
         productRepository.deleteById(id);
     }
+
+    public void updateStock(Long id, Integer stock) {
+        Product existingProduct = getProductById(id);
+        if (existingProduct == null) {
+            throw new RuntimeException("Product not found");
+        }
+
+        if (existingProduct.getStock() < stock) {
+            throw new RuntimeException("Stock is not enough");
+        }
+
+        existingProduct.setStock(existingProduct.getStock() - stock);
+        productRepository.save(existingProduct);
+    }
 }
